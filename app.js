@@ -5,6 +5,7 @@
   const contestedOnly = document.getElementById('contestedOnly');
   const resultCount = document.getElementById('resultCount');
   const emptyState = document.getElementById('emptyState');
+  const toggleAll = document.getElementById('toggleAll');
   const filters = [...document.querySelectorAll('.filter')];
   let activeFilter = 'All';
   const reviewedKey = 'princeton-voter-guide-reviewed-v1';
@@ -16,6 +17,7 @@
     if (activeFilter === 'All') return true;
     if (activeFilter === 'Judicial') return race.scope.includes('Judicial');
     if (activeFilter === 'Statewide') return race.scope === 'Statewide';
+    if (activeFilter === 'City') return race.scope === 'City' || race.scope === 'School';
     return race.scope === activeFilter;
   };
 
@@ -47,32 +49,56 @@
     </article>`;
   }
 
+  function measureBody(measure) {
+    return `<div class="measure-grid">
+        <div><span>What it would fund</span><ul>${measure.funds.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>
+        <div><span>Tax impact</span><p>${esc(measure.taxNote)}</p></div>
+      </div>
+      <div class="vote-meaning"><div><span>A vote FOR</span><p>${esc(measure.forMeans)}</p></div><div><span>A vote AGAINST</span><p>${esc(measure.againstMeans)}</p></div></div>`;
+  }
+
   function raceCard(race, index) {
     const unopposed = race.candidates.length === 1;
-    const candidateNames = race.candidates.map(c => c.name).join(' · ');
+    const candidateNames = race.measure ? 'Ballot proposition · For or Against' : race.candidates.map(c => c.name).join(' · ');
     const sourceLinks = race.sources.map(key => source(key)).filter(Boolean).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.label)} <small>${esc(s.date)}</small></a>`).join('');
-    const searchText = [race.title, race.scope, race.jurisdiction, race.duty, race.compare, ...race.candidates.flatMap(c => [c.name, c.party, c.background, c.why, ...c.priorities])].join(' ').toLowerCase();
+    const measureText = race.measure ? [...race.measure.funds, race.measure.taxNote] : [];
+    const searchText = [race.title, race.scope, race.jurisdiction, race.duty, race.area, ...measureText, ...race.candidates.flatMap(c => [c.name, c.party, c.background, c.why, ...c.priorities])].join(' ').toLowerCase();
+    const details = race.measure
+      ? measureBody(race.measure)
+      : `<div class="candidate-grid">${race.candidates.map(c => candidateCard(c, race.sources)).join('')}</div>`;
 
     return `<details class="race-card" data-id="${esc(race.id)}" data-scope="${esc(race.scope)}" data-unopposed="${unopposed}" data-search="${esc(searchText)}" ${index < 2 ? 'open' : ''}>
       <summary>
         <div class="race-number">${String(index + 1).padStart(2, '0')}</div>
         <div class="race-summary-main">
-          <div class="race-tags"><span>${esc(race.scope)}</span><span>${esc(race.jurisdiction)}</span>${unopposed ? '<span class="unopposed">Unopposed</span>' : ''}</div>
+          <div class="race-tags"><span>${esc(race.scope)}</span><span>${esc(race.jurisdiction)}</span>${unopposed ? '<span class="unopposed">Unopposed</span>' : ''}${race.area ? '<span class="area-tag">Depends on your address</span>' : ''}</div>
           <h3>${esc(race.title)}</h3>
           <p>${esc(candidateNames)}</p>
         </div>
         <span class="chevron" aria-hidden="true">+</span>
       </summary>
       <div class="race-body">
-        <div class="office-explainer"><div><span>Term</span><strong>${esc(race.term)}</strong></div><div><span>What this office does</span><p>${esc(race.duty)}</p></div></div>
-        <div class="comparison"><span>Comparison in one view</span><p>${esc(race.compare)}</p></div>
-        <div class="candidate-grid">${race.candidates.map(c => candidateCard(c, race.sources)).join('')}</div>
+        <div class="office-explainer"><div><span>${race.measure ? 'Type' : 'Term'}</span><strong>${esc(race.term)}</strong></div><div><span>${race.measure ? 'What it authorizes' : 'What this office does'}</span><p>${esc(race.duty)}</p></div></div>
+        ${race.area ? `<div class="area-note"><span>Who gets this race</span><p>${esc(race.area)}</p></div>` : ''}
+        ${details}
         <div class="race-footer"><div><span>Race sources</span>${sourceLinks}</div><label><input type="checkbox" class="review-check" data-id="${esc(race.id)}" ${reviewed.has(race.id) ? 'checked' : ''}> Mark this race reviewed</label></div>
       </div>
     </details>`;
   }
 
+  function renderStats() {
+    const races = guide.races;
+    const contests = races.filter(r => !r.measure);
+    const candidates = contests.reduce((sum, r) => sum + r.candidates.length, 0);
+    const unopposedCount = contests.filter(r => r.candidates.length === 1).length;
+    const measureCount = races.length - contests.length;
+    document.querySelectorAll('[data-stat="total"]').forEach(el => el.textContent = races.length);
+    document.getElementById('statHeading').textContent = `${contests.length} contests · ${measureCount} propositions · ${candidates} candidates`;
+    document.getElementById('statNote').textContent = `Research checked through Oct. 18, 2026. ${unopposedCount} contests have only one candidate.`;
+  }
+
   function render() {
+    renderStats();
     raceList.innerHTML = guide.races.map(raceCard).join('');
     wireReviewChecks();
     applyFilters();
@@ -88,8 +114,18 @@
       card.hidden = !visible;
       if (visible) shown += 1;
     });
-    resultCount.textContent = `Showing ${shown} of ${guide.races.length} races`;
+    resultCount.textContent = `Showing ${shown} of ${guide.races.length} ballot items`;
     emptyState.hidden = shown !== 0;
+    syncToggleAll();
+  }
+
+  function allVisibleOpen() {
+    const visible = [...document.querySelectorAll('.race-card:not([hidden])')];
+    return visible.length > 0 && visible.every(d => d.open);
+  }
+
+  function syncToggleAll() {
+    toggleAll.textContent = allVisibleOpen() ? 'Collapse all' : 'Expand all';
   }
 
   function wireReviewChecks() {
@@ -114,13 +150,32 @@
   }));
   searchInput.addEventListener('input', applyFilters);
   contestedOnly.addEventListener('change', applyFilters);
-  document.getElementById('expandAll').addEventListener('click', () => document.querySelectorAll('.race-card:not([hidden])').forEach(d => d.open = true));
-  document.getElementById('collapseAll').addEventListener('click', () => document.querySelectorAll('.race-card').forEach(d => d.open = false));
+  toggleAll.addEventListener('click', () => {
+    const shouldExpand = !allVisibleOpen();
+    document.querySelectorAll(shouldExpand ? '.race-card:not([hidden])' : '.race-card').forEach(d => d.open = shouldExpand);
+    syncToggleAll();
+  });
+  // <details> toggle events don't bubble, so listen in the capture phase.
+  raceList.addEventListener('toggle', syncToggleAll, true);
   document.getElementById('clearProgress').addEventListener('click', () => {
     reviewed.clear(); localStorage.removeItem(reviewedKey); document.querySelectorAll('.review-check').forEach(b => b.checked = false); updateProgress();
   });
   window.addEventListener('beforeprint', () => document.querySelectorAll('.race-card').forEach(d => d.open = true));
 
+  function markEarlyVotingDays() {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    document.querySelectorAll('.ev-schedule tbody tr').forEach(row => {
+      const { start, end } = row.dataset;
+      if (today > end) row.classList.add('is-past');
+      if (today >= start && today <= end) {
+        row.classList.add('is-today');
+        row.querySelector('th').insertAdjacentHTML('beforeend', ' <span class="today-badge">Open today</span>');
+      }
+    });
+  }
+
+  markEarlyVotingDays();
   document.getElementById('sourceLibrary').innerHTML = Object.values(guide.sources).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noreferrer"><span>${String(i + 1).padStart(2, '0')}</span><div><strong>${esc(s.label)}</strong><small>${esc(s.date)}</small></div></a>`).join('');
   render();
 })();

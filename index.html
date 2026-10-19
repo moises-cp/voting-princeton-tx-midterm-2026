@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Neutral, source-linked 2026 voter guide for the Princeton and Collin County ballot shown in the provided Texas Tribune sample ballot.">
+  <meta name="description" content="Neutral, source-linked guide to the November 2026 ballot for Princeton, Texas, checked against Collin County's official sample ballot.">
   <title>Princeton & Collin County 2026 Voter Guide</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,26 +13,94 @@
     <div class="hero-inner">
       <p class="eyebrow">2026 GENERAL ELECTION · RESEARCH GUIDE</p>
       <h1>Know the office.<br><span>Compare the candidates.</span></h1>
-      <p class="lede">A politically neutral, source-linked guide for the Princeton/Collin County ballot geography confirmed from the personalized Texas Tribune sample.</p>
+      <p class="lede">A politically neutral, source-linked guide to the Princeton, Texas ballot, checked against Collin County's official all-race sample ballot.</p>
       <div class="hero-actions">
-        <a class="button primary" href="#races">Explore 42 races</a>
+        <a class="button primary" href="#races">Explore <span data-stat="total">all</span> ballot items</a>
         <a class="button secondary" href="texas-voter-guide-2026.pdf" target="_blank" rel="noopener">Open full PDF</a>
       </div>
       <div class="scope-card" aria-label="Ballot geography">
         <div><span>City</span><strong>Princeton</strong></div>
         <div><span>County</span><strong>Collin</strong></div>
         <div><span>U.S. House</span><strong>District 3</strong></div>
-        <div><span>Texas House</span><strong>District 89</strong></div>
-        <div><span>Justice precinct</span><strong>Precinct 2</strong></div>
+        <div><span>Texas House</span><strong>District 67 or 89</strong></div>
+        <div><span>Justice precinct</span><strong>Mostly Precinct 2</strong></div>
       </div>
     </div>
   </header>
 
   <main>
     <section class="deadline-band" aria-label="Election dates">
-      <div><span>Early voting</span><strong>Oct. 19-30</strong></div>
+      <div><span>Early voting</span><strong><a href="#early-voting">Oct. 19-30</a></strong></div>
       <div><span>Mail-ballot application received by</span><strong>Oct. 23</strong></div>
       <div><span>Election Day</span><strong>Nov. 3 · 7 a.m.-7 p.m.</strong></div>
+    </section>
+
+    <section class="early-voting wrap" id="early-voting" aria-labelledby="early-title">
+      <div>
+        <p class="eyebrow ink">EARLY VOTING IN PRINCETON</p>
+        <h2 id="early-title">Vote early, Oct. 19-30.</h2>
+        <address class="ev-location">
+          <strong>Steven and Judy Deffibaugh Community Center</strong>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=416+N+4th+Street%2C+Princeton%2C+TX" target="_blank" rel="noreferrer">416 N. 4th Street, Princeton, TX ↗</a>
+        </address>
+        <p class="ev-note">Collin County uses countywide vote centers: registered Collin County voters may vote at any county location during early voting and on Election Day (Tuesday, Nov. 3, 7 a.m.-7 p.m.). <a href="https://www.collincountytx.gov/elections/FAQ" target="_blank" rel="noreferrer">County elections FAQ ↗</a></p>
+      </div>
+      <div class="ev-table-wrap">
+        <table class="ev-schedule">
+          <caption class="visually-hidden">Early voting hours at the Steven and Judy Deffibaugh Community Center</caption>
+          <thead><tr><th scope="col">Dates</th><th scope="col">Days</th><th scope="col">Hours</th></tr></thead>
+          <tbody>
+            <tr data-start="2026-10-19" data-end="2026-10-23"><th scope="row">Oct. 19-23</th><td>Mon-Fri</td><td>8 a.m.-5 p.m.</td></tr>
+            <tr data-start="2026-10-24" data-end="2026-10-24"><th scope="row">Oct. 24</th><td>Saturday</td><td>7 a.m.-7 p.m.</td></tr>
+            <tr data-start="2026-10-25" data-end="2026-10-25"><th scope="row">Oct. 25</th><td>Sunday</td><td>11 a.m.-5 p.m.</td></tr>
+            <tr data-start="2026-10-26" data-end="2026-10-30"><th scope="row">Oct. 26-30</th><td>Mon-Fri</td><td>7 a.m.-7 p.m.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="split-guide wrap" id="your-ballot" aria-labelledby="split-title">
+      <p class="eyebrow ink">IS THIS MY BALLOT?</p>
+      <h2 id="split-title">Most races are the same for all of Princeton. A few depend on your address.</h2>
+      <p>Races marked <strong>Depends on your address</strong> appear only on some Princeton ballots. Your voter registration card shows your voting precinct number, and the county's ballot lookup shows your exact ballot.</p>
+      <div class="split-grid">
+        <section aria-labelledby="same-title">
+          <h3 id="same-title">On every Princeton ballot</h3>
+          <ul>
+            <li>All statewide races and the 15th Court of Appeals</li>
+            <li>U.S. House District 3 (all of Princeton)</li>
+            <li>Fifth Court of Appeals, countywide offices, and county judges</li>
+            <li>Collin County Propositions A-D and Collin College Proposition A</li>
+            <li>Appraisal District board, Places 1-3</li>
+          </ul>
+        </section>
+        <section aria-labelledby="varies-title">
+          <h3 id="varies-title">Depends on your address</h3>
+          <ul>
+            <li><strong>Texas House:</strong> District 67 or District 89</li>
+            <li><strong>Justice of the Peace:</strong> Precinct 2 for most of Princeton; Precinct 1 or 3 at the edges</li>
+            <li><strong>County Commissioner:</strong> Precinct 2 race only south of U.S. 380; most of Princeton is in Precinct 3, which has no race this year</li>
+            <li><strong>City Council:</strong> only inside Princeton city limits</li>
+            <li><strong>School board:</strong> only inside Princeton ISD</li>
+          </ul>
+        </section>
+      </div>
+      <div class="precinct-table-wrap">
+        <table class="precinct-table">
+          <caption class="visually-hidden">Districts for Princeton-area voting precincts</caption>
+          <thead><tr><th scope="col">Voting precinct</th><th scope="col">Texas House</th><th scope="col">Commissioner race?</th><th scope="col">Justice of the Peace</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">9</th><td>District 67</td><td>No (Precinct 3)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">10</th><td>District 67</td><td>No (Precinct 3)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">198</th><td>District 67</td><td>No (Precinct 3)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">215</th><td>District 67</td><td>No (Precinct 3)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">228</th><td>District 89</td><td>No (Precinct 3)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">191</th><td>District 89</td><td>Yes (Precinct 2)</td><td>Precinct 2</td></tr>
+            <tr><th scope="row">114</th><td>District 89</td><td>Yes (Precinct 2)</td><td>Precinct 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Read from <a href="https://www.collincountytx.gov/Government/Commissioners-Court/precincts" target="_blank" rel="noreferrer">Collin County's precinct maps ↗</a> (Jan. 2024) and Texas Legislative Council district reports. Princeton has grown since these maps were drawn, so newer areas may not be listed. Confirm with the <a href="https://apps2.collincountytx.gov/Elections2BallotAddressSearch" target="_blank" rel="noreferrer">county ballot lookup ↗</a>. No State Senate race is on Princeton ballots this year: all of Princeton is in Senate District 8, which is not up for election.</p>
     </section>
 
     <section class="intro wrap" id="about">
@@ -41,8 +109,8 @@
         <h2>Start with what the office can actually do.</h2>
       </div>
       <div class="intro-copy">
-        <p>Open any race to see the office's responsibilities, a plain-English comparison, each candidate's background and stated reasons for running, and linked evidence. Candidate priorities are labeled as candidate claims; official records and independent reporting are linked separately.</p>
-        <p class="notice"><strong>Important:</strong> This is not an official ballot and it does not recommend candidates. The supplied personalized sample contained candidate contests but no ballot propositions. Check your official Collin County sample ballot for your precinct before voting.</p>
+        <p>Open any race to see the office's responsibilities, each candidate's background and stated reasons for running, and linked evidence. The guide does not summarize or compare candidates for you; each card uses the same fields so you can compare them side by side. Candidate priorities are labeled as candidate claims; official records and independent reporting are linked separately.</p>
+        <p class="notice"><strong>Important:</strong> This is not an official ballot and it does not recommend candidates or positions on propositions. It covers every item on Collin County's official all-race sample ballot that applies in Princeton, including county and Collin College bond propositions. Some races depend on your address, and each one is marked "Depends on your address." Check your official sample ballot for your precinct before voting.</p>
       </div>
     </section>
 
@@ -52,10 +120,10 @@
         <h2 id="method-title">No invented answers.</h2>
       </div>
       <div class="method-grid">
-        <article><span>01</span><h3>Roster first</h3><p>Candidate names and geography were checked against election-authority pages and the provided sample.</p></article>
+        <article><span>01</span><h3>Roster first</h3><p>Every contest, proposition, and candidate name was checked against Collin County's official all-race sample ballot.</p></article>
         <article><span>02</span><h3>Primary sources</h3><p>Campaign sites, government biographies, filings, and candidate questionnaires are identified as such.</p></article>
         <article><span>03</span><h3>Gaps stay visible</h3><p>When no verified website, interview, or candidate-specific platform was found, the guide says so.</p></article>
-        <article><span>04</span><h3>Same full content</h3><p>The interactive page and downloadable PDF are generated from the same 42-race data set.</p></article>
+        <article><span>04</span><h3>Same standard for everyone</h3><p>Every candidate gets the same fields, and candidates appear in official ballot order.</p></article>
       </div>
     </section>
 
@@ -64,31 +132,33 @@
         <div class="explorer-heading">
           <div>
             <p class="eyebrow">YOUR BALLOT, ORGANIZED</p>
-            <h2>42 contests · 77 candidates</h2>
-            <p>Research checked through Oct. 18, 2026. Eighteen listed contests are unopposed.</p>
+            <h2 id="statHeading">Your ballot</h2>
+            <p id="statNote">Research checked through Oct. 18, 2026.</p>
           </div>
           <div class="progress-card">
-            <span id="progressText">0 of 42 reviewed</span>
+            <span id="progressText">0 reviewed</span>
             <div class="progress-track"><div id="progressBar"></div></div>
             <button id="clearProgress" type="button">Clear review marks</button>
           </div>
         </div>
 
-        <div class="controls" role="search">
-          <label class="search-label"><span>Search candidates, offices, or issues</span><input id="searchInput" type="search" placeholder="Try “schools,” “judge,” or a name"></label>
-          <div class="filter-row" aria-label="Filter by level">
+        <div class="controls" role="search" aria-label="Filter races">
+          <div class="search-field">
+            <label class="visually-hidden" for="searchInput">Search candidates, offices, or issues</label>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="2"/><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="searchInput" type="search" placeholder="Search names, offices, issues">
+          </div>
+          <div class="filter-row" role="group" aria-label="Filter by level">
             <button class="filter active" data-filter="All" type="button">All</button>
             <button class="filter" data-filter="Statewide" type="button">Statewide</button>
             <button class="filter" data-filter="District" type="button">District</button>
             <button class="filter" data-filter="County" type="button">County</button>
-            <button class="filter" data-filter="City" type="button">City</button>
+            <button class="filter" data-filter="City" type="button">City &amp; School</button>
             <button class="filter" data-filter="Judicial" type="button">Judicial</button>
+            <button class="filter" data-filter="Proposition" type="button">Propositions</button>
+            <label class="toggle-chip"><input id="contestedOnly" type="checkbox"> Contested only</label>
           </div>
-          <div class="utility-row">
-            <label><input id="contestedOnly" type="checkbox"> Show contested races only</label>
-            <button id="expandAll" type="button">Expand all</button>
-            <button id="collapseAll" type="button">Collapse all</button>
-          </div>
+          <button id="toggleAll" class="toggle-all" type="button">Expand all</button>
         </div>
 
         <div id="resultCount" class="result-count" aria-live="polite"></div>
@@ -104,6 +174,7 @@
       </div>
       <div class="official-links">
         <a href="https://www.collincountytx.gov/Elections/sample-ballots?electionID=76" target="_blank" rel="noreferrer"><span>Official source</span><strong>Collin County sample ballots</strong></a>
+        <a href="https://apps2.collincountytx.gov/Elections2BallotAddressSearch" target="_blank" rel="noreferrer"><span>Official source</span><strong>Collin County ballot address search</strong></a>
         <a href="https://www.sos.state.tx.us/elections/laws/2026-november-general-election.shtml" target="_blank" rel="noreferrer"><span>Official source</span><strong>Texas Secretary of State</strong></a>
         <a href="https://www.princetontx.gov/294/Elections" target="_blank" rel="noreferrer"><span>Official source</span><strong>City of Princeton elections</strong></a>
       </div>
