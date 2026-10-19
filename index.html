@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Neutral, source-linked 2026 voter guide for the Princeton and Collin County ballot shown in the provided Texas Tribune sample ballot.">
+  <title>Princeton & Collin County 2026 Voter Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#races">Skip to races</a>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">2026 GENERAL ELECTION · RESEARCH GUIDE</p>
+      <h1>Know the office.<br><span>Compare the candidates.</span></h1>
+      <p class="lede">A politically neutral, source-linked guide for the Princeton/Collin County ballot geography confirmed from the personalized Texas Tribune sample.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#races">Explore 42 races</a>
+        <a class="button secondary" href="texas-voter-guide-2026.pdf" target="_blank" rel="noopener">Open full PDF</a>
+      </div>
+      <div class="scope-card" aria-label="Ballot geography">
+        <div><span>City</span><strong>Princeton</strong></div>
+        <div><span>County</span><strong>Collin</strong></div>
+        <div><span>U.S. House</span><strong>District 3</strong></div>
+        <div><span>Texas House</span><strong>District 89</strong></div>
+        <div><span>Justice precinct</span><strong>Precinct 2</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="deadline-band" aria-label="Election dates">
+      <div><span>Early voting</span><strong>Oct. 19-30</strong></div>
+      <div><span>Mail-ballot application received by</span><strong>Oct. 23</strong></div>
+      <div><span>Election Day</span><strong>Nov. 3 · 7 a.m.-7 p.m.</strong></div>
+    </section>
+
+    <section class="intro wrap" id="about">
+      <div>
+        <p class="eyebrow ink">HOW TO USE THIS GUIDE</p>
+        <h2>Start with what the office can actually do.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Open any race to see the office's responsibilities, a plain-English comparison, each candidate's background and stated reasons for running, and linked evidence. Candidate priorities are labeled as candidate claims; official records and independent reporting are linked separately.</p>
+        <p class="notice"><strong>Important:</strong> This is not an official ballot and it does not recommend candidates. The supplied personalized sample contained candidate contests but no ballot propositions. Check your official Collin County sample ballot for your precinct before voting.</p>
+      </div>
+    </section>
+
+    <section class="method wrap" aria-labelledby="method-title">
+      <div class="method-heading">
+        <p class="eyebrow ink">EDITORIAL METHOD</p>
+        <h2 id="method-title">No invented answers.</h2>
+      </div>
+      <div class="method-grid">
+        <article><span>01</span><h3>Roster first</h3><p>Candidate names and geography were checked against election-authority pages and the provided sample.</p></article>
+        <article><span>02</span><h3>Primary sources</h3><p>Campaign sites, government biographies, filings, and candidate questionnaires are identified as such.</p></article>
+        <article><span>03</span><h3>Gaps stay visible</h3><p>When no verified website, interview, or candidate-specific platform was found, the guide says so.</p></article>
+        <article><span>04</span><h3>Same full content</h3><p>The interactive page and downloadable PDF are generated from the same 42-race data set.</p></article>
+      </div>
+    </section>
+
+    <section class="explorer" id="races">
+      <div class="wrap">
+        <div class="explorer-heading">
+          <div>
+            <p class="eyebrow">YOUR BALLOT, ORGANIZED</p>
+            <h2>42 contests · 77 candidates</h2>
+            <p>Research checked through Oct. 18, 2026. Eighteen listed contests are unopposed.</p>
+          </div>
+          <div class="progress-card">
+            <span id="progressText">0 of 42 reviewed</span>
+            <div class="progress-track"><div id="progressBar"></div></div>
+            <button id="clearProgress" type="button">Clear review marks</button>
+          </div>
+        </div>
+
+        <div class="controls" role="search">
+          <label class="search-label"><span>Search candidates, offices, or issues</span><input id="searchInput" type="search" placeholder="Try “schools,” “judge,” or a name"></label>
+          <div class="filter-row" aria-label="Filter by level">
+            <button class="filter active" data-filter="All" type="button">All</button>
+            <button class="filter" data-filter="Statewide" type="button">Statewide</button>
+            <button class="filter" data-filter="District" type="button">District</button>
+            <button class="filter" data-filter="County" type="button">County</button>
+            <button class="filter" data-filter="City" type="button">City</button>
+            <button class="filter" data-filter="Judicial" type="button">Judicial</button>
+          </div>
+          <div class="utility-row">
+            <label><input id="contestedOnly" type="checkbox"> Show contested races only</label>
+            <button id="expandAll" type="button">Expand all</button>
+            <button id="collapseAll" type="button">Collapse all</button>
+          </div>
+        </div>
+
+        <div id="resultCount" class="result-count" aria-live="polite"></div>
+        <div id="raceList"></div>
+        <div id="emptyState" class="empty-state" hidden>No races match those filters. Try a broader search.</div>
+      </div>
+    </section>
+
+    <section class="official wrap" id="official">
+      <div>
+        <p class="eyebrow ink">BEFORE YOU VOTE</p>
+        <h2>Verify the final ballot.</h2>
+      </div>
+      <div class="official-links">
+        <a href="https://www.collincountytx.gov/Elections/sample-ballots?electionID=76" target="_blank" rel="noreferrer"><span>Official source</span><strong>Collin County sample ballots</strong></a>
+        <a href="https://www.sos.state.tx.us/elections/laws/2026-november-general-election.shtml" target="_blank" rel="noreferrer"><span>Official source</span><strong>Texas Secretary of State</strong></a>
+        <a href="https://www.princetontx.gov/294/Elections" target="_blank" rel="noreferrer"><span>Official source</span><strong>City of Princeton elections</strong></a>
+      </div>
+    </section>
+
+    <section class="sources wrap" id="sources">
+      <p class="eyebrow ink">SOURCE LIBRARY</p>
+      <h2>What was reviewed</h2>
+      <p>Every race card links to its most relevant evidence. This library collects the recurring sources and review dates.</p>
+      <div id="sourceLibrary"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p><strong>Princeton & Collin County 2026 Voter Guide</strong></p><p>Independent research aid · Not affiliated with a candidate, party, election office, or news organization · Checked Oct. 18, 2026</p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
