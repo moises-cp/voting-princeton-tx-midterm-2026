@@ -35,6 +35,12 @@ button { cursor: pointer; }
 .button { border: 1px solid transparent; border-radius: 4px; padding: 12px 18px; font-weight: 750; text-decoration: none; }
 .button.primary { color: var(--navy-2); background: var(--amber-light); }
 .button.secondary { color: white; background: transparent; border-color: rgba(255,255,255,.45); }
+.lang-switch { display: inline-flex; overflow: hidden; border: 1px solid rgba(255,255,255,.45); border-radius: 99px; }
+.lang-switch button { padding: 6px 14px; color: white; background: transparent; border: 0; font-size: .82rem; font-weight: 750; }
+.lang-switch button[aria-pressed="true"] { color: var(--navy-2); background: var(--amber-light); }
+.lang-switch button:focus-visible { outline: 2px solid var(--amber-light); outline-offset: -2px; }
+.hero .lang-switch { position: absolute; top: 22px; right: 0; }
+.lang-switch-footer { flex: 0 0 auto; align-self: center; border-color: rgba(255,255,255,.3); }
 .scope-card { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
 .scope-card div { padding: 18px 18px 18px 0; }
 .scope-card div + div { padding-left: 18px; border-left: 1px solid rgba(255,255,255,.2); }
@@ -219,11 +225,13 @@ footer p { margin: 0; font-size: .78rem; }
   #sourceLibrary a:nth-child(odd) { border-right: 0; }
   footer .wrap { display: block; }
   footer p + p { margin-top: 8px; }
+  .lang-switch-footer { margin-top: 16px; }
 }
 
 @media (max-width: 520px) {
   .wrap, .hero-inner { width: min(100% - 24px, 1180px); }
-  .hero-inner { padding-top: 52px; }
+  .hero-inner { padding-top: 24px; }
+  .hero .lang-switch { position: static; margin-bottom: 22px; }
   .hero h1 { font-size: 3rem; }
   .method-grid { grid-template-columns: 1fr; }
   .method-grid article + article { border-left: 0; border-top: 1px solid var(--line); }
@@ -238,7 +246,7 @@ footer p { margin: 0; font-size: .78rem; }
   @page { size: Letter; margin: .55in; }
   :root { --paper: #fff; --cream: #fff; }
   body { background: white; font-size: 9.25pt; line-height: 1.35; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .skip-link, .hero-actions, .controls, .progress-card, .review-check, #clearProgress, .result-count, .empty-state { display: none !important; }
+  .skip-link, .lang-switch, .hero-actions, .controls, .progress-card, .review-check, #clearProgress, .result-count, .empty-state { display: none !important; }
   .wrap, .hero-inner { width: 100%; }
   .hero { border-bottom-width: 5px; }
   .hero-inner { padding: .4in 0 .28in; }

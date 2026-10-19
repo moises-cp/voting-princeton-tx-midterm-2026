@@ -1,6 +1,13 @@
 Princeton & Collin County 2026 Voter Guide
 
-Open index.html in a modern web browser. The guide works offline; an internet
+Open index.html in a modern web browser.
+
+Languages: the guide is available in English and Spanish. It shows Spanish when the
+browser's preferred language is Spanish and English otherwise; visitors can switch
+with the English/Español buttons, and their choice is remembered. Add ?lang=es or
+?lang=en to a link to open the guide in a specific language. Spanish race content
+lives in data.es.js; any string missing there falls back to English.
+PDFs: texas-voter-guide-2026.pdf (English) and texas-voter-guide-2026-es.pdf (Spanish). The guide works offline; an internet
 connection is needed only when opening external source and campaign links.
 
 Included ballot geography (all of Princeton, Collin County):
